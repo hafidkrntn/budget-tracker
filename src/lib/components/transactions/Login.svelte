@@ -6,21 +6,26 @@
 	import type { LoginPayload } from '$lib/api/auth/type';
 	import { authApi } from '$lib/api/auth/auth';
 	import { handlers } from '$lib/store/alert';
+	import { goto } from '$app/navigation';
 
 	let email = '';
 	let password = '';
 
 	async function handleSubmit() {
 		const payload: LoginPayload = {
-			email: email,
-			password: password,
-		}
+			email,
+			password
+		};
+
 		try {
-			const response = await authApi.login(payload)
-			const access = response.result.data.token
-			localStorage.setItem("access", access)
+			const response = await authApi.login(payload);
+			const access = response.result.data.token;
+			localStorage.setItem('access', access);
+			if (response.result.code === 200) {
+				goto('/dashboard');
+			}
 		} catch (error) {
-			handlers.fetchErrorHandling(error)
+			handlers.fetchErrorHandling(error);
 		}
 	}
 </script>

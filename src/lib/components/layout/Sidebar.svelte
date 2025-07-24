@@ -24,9 +24,9 @@
 	class="fixed top-0 left-0 z-40 h-screen w-58 -translate-x-full overflow-hidden transition-transform sm:sticky sm:translate-x-0"
 >
 	<div class="h-full overflow-y-auto bg-white px-3 py-4">
-		<div class="flex items-center justify-center gap-4 px-11 pb-8">
+		<div class="flex items-center justify-center gap-4 px-11 py-6">
 			<div class="bg-primary h-4 w-4 rounded-full"></div>
-			<h1>Codarium</h1>
+			<h1 class="text-xl">Codarium</h1>
 		</div>
 		<ul class="flex flex-col gap-2">
 			{#each menuItems as item}
